@@ -32,7 +32,7 @@ def configure_gated_edge_counter(count_chan = "/Dev3/ctr0",
 								gate_chan = "/Dev3/PFI1"):
 
 	ctr = nidaqmx.task.Task()
-	ctr.ci_channels.add_crigger.dig_lvl_src = time_chan
+	ctr.ci_channels.add_ci_count_edges_chan(count_chan)
 
 	ctr.triggers.pause_trigger.dig_lvl_src = gate_chan
 	ctr.triggers.pause_trigger.trig_type = nidaqmx.constants.TriggerType.DIGITAL_LEVEL
