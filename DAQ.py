@@ -12,7 +12,7 @@ def configure_timed_edge_counter(duration,
 		low_time = .0001,
 		high_time = duration)
 
-	ctr.triggers.pause_trigger.dig_lvl_src = time_chan.replace('ctr', 'Ctr') + 'InternalOutput')
+	ctr.triggers.pause_trigger.dig_lvl_src = time_chan.replace('ctr', 'Ctr') + 'InternalOutput'
 	ctr.triggers.pause_trigger.trig_type = nidaqmx.constants.TriggerType.DIGITAL_LEVEL
 	ctr.triggers.pause_trigger.dig_lvl_when = nidaqmx.constants.Level.LOW
 
