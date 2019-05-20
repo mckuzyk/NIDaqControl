@@ -2,7 +2,7 @@ import nidaqmx
 
 def configure_timed_edge_counter(duration, 
 								count_chan = "/Dev3/ctr0", 
-								time_chan = "/Dev3/Ctr1InternalOutput"):
+								time_chan = "/Dev3/ctr1"):
 
 	ctr = nidaqmx.task.Task()
 	ctr.ci_channels.add_ci_count_edges_chan(count_chan)
@@ -12,7 +12,7 @@ def configure_timed_edge_counter(duration,
 		low_time = .0001,
 		high_time = duration)
 
-	ctr.triggers.pause_trigger.dig_lvl_src = time_chan
+	ctr.triggers.pause_trigger.dig_lvl_src = time_chan.replace('ctr', 'Ctr') + 'InternalOutput')
 	ctr.triggers.pause_trigger.trig_type = nidaqmx.constants.TriggerType.DIGITAL_LEVEL
 	ctr.triggers.pause_trigger.dig_lvl_when = nidaqmx.constants.Level.LOW
 
